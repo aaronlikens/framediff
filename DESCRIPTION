@@ -1,0 +1,15 @@
+Package: framediff
+Type: Package
+Title: Performs a simple frame differencing algorithm
+Version: 0.1.0
+Author: Aaron D. Likens
+Maintainer: Aaron D. Likens <alikens@unomaha.edu>
+Description: Provides functions for parsing videos into image files.
+    and extracting movement via frame differencing. NOTE: The parsing function
+    requires that ffmpeg be installed and accessible via terminal/command
+    prompt.
+License: GPL
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Depends: jpeg,signal
