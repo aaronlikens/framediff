@@ -1,7 +1,7 @@
 #' Frame Differencing
 #'
 #' Performs frame differencing on a sequence of video frames
-#' @usage fd(dir, m = 2, cutoff = 1, do.plot = TRUE,
+#' @usage fd(dir, do.filter = FALSE, m = 2, cutoff = 1, do.plot = TRUE,
 #' split_screen = TRUE, verbose = FALSE, shuffle = FALSE,
 #' mag = TRUE)
 #' @param dir dir specifies a directory containing sequentially numbered images.
@@ -26,7 +26,7 @@
 #' @export
 
 
-fd = function(dir = NULL, m = 2, cutoff = 1, do.plot = TRUE,
+fd = function(dir = NULL, do.filter = FALSE, m = 2, cutoff = 1, do.plot = TRUE,
               split_screen = TRUE, verbose = FALSE, shuffle = FALSE,
               mag = TRUE){
 

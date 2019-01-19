@@ -4,13 +4,15 @@
 \alias{fd}
 \title{Frame Differencing}
 \usage{
-fd(dir, m = 2, cutoff = 1, do.plot = TRUE,
+fd(dir, do.filter = FALSE, m = 2, cutoff = 1, do.plot = TRUE,
 split_screen = TRUE, verbose = FALSE, shuffle = FALSE,
 mag = TRUE)
 }
 \arguments{
 \item{dir}{dir specifies a directory containing sequentially numbered images.
 Uses current directory by default.}
+
+\item{do.filter}{logical indicating whether filtering should be performed}
 
 \item{m}{integer order of the butterworth filter}
 
