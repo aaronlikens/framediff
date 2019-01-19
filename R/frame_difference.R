@@ -2,7 +2,8 @@
 #'
 #' Performs frame differencing on a sequence of video frames
 #' @usage fd(dir, m = 2, cutoff = 1, do.plot = TRUE,
-#' split_screen = TRUE, verbose = FALSE, shuffle = FALSE)
+#' split_screen = TRUE, verbose = FALSE, shuffle = FALSE,
+#' mag = TRUE)
 #' @param dir dir specifies a directory containing sequentially numbered images.
 #'  Uses current directory by default.
 #' @param m integer order of the butterworth filter
@@ -15,6 +16,8 @@
 #' being anlayzed
 #' @param shuffle logical indicating whether image order should be shuffled
 #' for the purpose of surrogate analysis
+#' @param mag logical indicating whether magnitude (absolute frame difference)
+#' or difference should be returned. Default is TRUE
 #' @importFrom jpeg readJPEG
 #' @importFrom signal butter filter
 #' @importFrom graphics lines par plot
@@ -23,7 +26,8 @@
 
 
 fd = function(dir = NULL, m = 2, cutoff = 1, do.plot = TRUE,
-              split_screen = TRUE, verbose = FALSE, shuffle = FALSE){
+              split_screen = TRUE, verbose = FALSE, shuffle = FALSE,
+              mag = TRUE){
 
     # check user input and use the specified directory. Otherwise current
     # directory will be used.
@@ -66,7 +70,13 @@ fd = function(dir = NULL, m = 2, cutoff = 1, do.plot = TRUE,
         image_1 = scale(image_1)
 
         # difference, standardize, and store difference vectors
-        image_diff = abs(image_2 - image_1)
+        image_diff = matrix(0, nrow(image_2), nrow(image_1))
+        if (mag){
+            image_diff = abs(image_2 - image_1)
+        }else{
+            image_diff = image_2 - image_1
+        }
+
 
         # check and split images into left and right if required
         left = floor(ncol(image_diff)/2)

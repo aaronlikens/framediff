@@ -5,7 +5,8 @@
 \title{Frame Differencing}
 \usage{
 fd(dir, m = 2, cutoff = 1, do.plot = TRUE,
-split_screen = TRUE, verbose = FALSE, shuffle = FALSE)
+split_screen = TRUE, verbose = FALSE, shuffle = FALSE,
+mag = TRUE)
 }
 \arguments{
 \item{dir}{dir specifies a directory containing sequentially numbered images.
@@ -26,6 +27,9 @@ being anlayzed}
 
 \item{shuffle}{logical indicating whether image order should be shuffled
 for the purpose of surrogate analysis}
+
+\item{mag}{logical indicating whether magnitude (absolute frame difference)
+or difference should be returned. Default is TRUE}
 }
 \description{
 Performs frame differencing on a sequence of video frames
