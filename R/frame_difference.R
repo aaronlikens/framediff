@@ -96,8 +96,8 @@ fd = function(dir = NULL, do.filter = FALSE, m = 2, cutoff = 1, do.plot = TRUE,
         counter = counter + 1
 
     }
-    l = NULL
-    r = NULL
+    l = plms
+    r = prms
     if (do.filter){
         # smooth signal with a butter worth filter e.g., Paxton and Dale (2012)
         bf = signal::butter(m, cutoff)
