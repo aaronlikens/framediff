@@ -6,6 +6,7 @@
 #' mag = TRUE)
 #' @param dir dir specifies a directory containing sequentially numbered images.
 #'  Uses current directory by default.
+#' @param do.filter logical indicating whether filtering should be performed
 #' @param m integer order of the butterworth filter
 #' @param cutoff real-valued frequency spectrum cutoff proportion for
 #' butterworth filter
@@ -65,6 +66,7 @@ fd = function(dir = NULL, m = 2, cutoff = 1, do.plot = TRUE,
         image_2[is.nan(image_2)] = NULL
         image_1 = rowMeans(image_1, dims = 2)
         image_1[is.nan(image_1)] = NULL
+
         # turn images into pixel z-scores
         image_2 = scale(image_2)
         image_1 = scale(image_1)
@@ -94,11 +96,15 @@ fd = function(dir = NULL, m = 2, cutoff = 1, do.plot = TRUE,
         counter = counter + 1
 
     }
+    l = NULL
+    r = NULL
+    if (do.filter){
+        # smooth signal with a butter worth filter e.g., Paxton and Dale (2012)
+        bf = signal::butter(m, cutoff)
+        l = signal::filter(bf, plms)
+        r = signal::filter(bf, prms)
+    }
 
-    # smooth signal with a butter worth filter e.g., Paxton and Dale (2012)
-    bf = signal::butter(m, cutoff)
-    l = signal::filter(bf, plms)
-    r = signal::filter(bf, prms)
 
     # format output data
     out = data.frame(l, r)
