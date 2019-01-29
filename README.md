@@ -3,3 +3,6 @@ This project started as a simple R translation of frame differencing Matlab code
 
 # installation
 devtools::install_github('https://github.com/aaronlikens/framediff')
+
+# Additional Installation Notes
+Use of the ffpmeg function requires that ffmpeg be installed and accessible via the command line.
